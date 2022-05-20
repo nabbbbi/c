@@ -2,11 +2,10 @@
 #include <stdlib.h>
 
 void copy_string(char *dest, const char *src){
-  while(*src){
-    *dest = *src;
-    dest++;
-    src++;
-  }
+  int i;
+  for (i=0; src[i]; i++)
+    dest[i] = src[i];
+  dest[i]='\0';
 }
 
 int main(){
