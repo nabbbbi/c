@@ -7,6 +7,7 @@ void copy_string(char *dest, const char *src){
     dest++;
     src++;
   }
+  *dest=0;
 }
 
 int main(){
