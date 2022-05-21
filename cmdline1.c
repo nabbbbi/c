@@ -2,10 +2,8 @@
 
 int main(int argc, char **argv) /*array of pointers to cmdarguments*/
 {
-  while (*argv)
-    {
-    printf("[%s]\n", *argv); /*s is string that refers to memory*/
-    argv++;
-  }
+  int i;
+  for (i=1; i < argc; i++)
+    printf("[%s]\n", argv[i]); 
   return 0;
 }
