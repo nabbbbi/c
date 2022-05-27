@@ -1,29 +1,34 @@
-/*getchar3.c Ruslan Gadzhiev */
 #include <stdio.h>
 
-int main()
+int main(int argc, char **argv)
 {
-  int c,pr;
-  pr = 1;
-  while ((c = getchar()) != EOF)
+  FILE *from, *to;
+  int c, lcnt;
+  if (argc < 3)
     {
-      switch(c)
-	{
-	case('\n'):
-	  {
-	    putchar('\n');
-	    pr = 1;
-	    break;
-	  }
-	case(' '):
-	  {
-	    pr = 0;
-	    break;
-	  }
-	default:
-	  if (pr)
-	    putchar(c);
-	}
+      fprintf(stderr, "Too few arguments\n");
+      return 1;
     }
-    return 0;
+  from = fopen(argv[1], "r");
+  if (!from)
+    {
+      perror(argv[1]);
+      return 2;
+    }
+  to = fopen(argv[2], "w"); /*copy address of file*/
+  if (!to)
+    {
+      perror(argv[2]);
+      return 3;
+    }
+  lcnt = 1;
+  while ((c = fgetc(from)) != EOF)
+  {
+    fputc(c,to);
+    if (c == '\n')
+      lcnt++;
+    if (lcnt >= 10)
+      break;
+  }
+return 0;
 }
