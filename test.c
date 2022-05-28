@@ -27,7 +27,7 @@ int main(int argc, char **argv)
       return 2;
     }
   intfilesum(f,&s, &c); /*This has to be address draw from variable not a pointer*/
-  printf("%d %d\n",s, c);
+  printf("sum of numbers is %d\n number count is %d\n",s, c);
   fclose(f);
   return 0;
 }
