@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 void intfilesum(FILE *f, int *sum, int *count)
 {
   int n;

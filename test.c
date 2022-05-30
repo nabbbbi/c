@@ -1,33 +1,55 @@
 #include <stdio.h>
 
-void intfilesum(FILE *f, int *sum, int *count)
+void string51(FILE *f1, FILE *f2)
 {
-  int n;
-  *sum = 0;
-  *count = 0;
-  while (fscanf(f,"%d",&n) == 1)
+  char buf[51];
+  while (fgets(buf, sizeof(buf), f1))
     {
-      *sum+=n;
-      (*count)++;
+      int i;
+      int nlpos = -1;
+      for (i=0; i < sizeof(buf) && buf[i]; i++)
+	if (buf[i] == '\n')
+	  {
+	    nlpos = i;
+	    break;
+	  }
+      if (nlpos == -1) /*buf was't enough */
+	{
+	  int c;
+	  fputc('\n', f2); /*print empty line cause buf was't enough*/
+	  while ((c = fgetc(f1)) != EOF) /*if it's last line cycle will end
+immediatly*/
+	    if (c == '\n') /*not last line but was't enough for buf*/
+	      break; /*this breaks EOF cycle*/
+	}
+      else
+	{
+	  buf[nlpos]='\0';
+	  fprintf(f2,"[%s]\n",buf);
+	}
     }
 }
-int main(int argc, char **argv)
+
+int main (int argc, char **argv)
 {
-  FILE *f;
-  int s,c;
-  if (argc <2)
+  FILE *f1, *f2;
+  if (argc < 3)
     {
-      fprintf(stderr, "Too few arguments\n");
+      fprintf(stderr,"too few arguments");
       return 1;
     }
-  f = fopen(argv[1], "r");
-  if (!f)
+  f1 = fopen(argv[1], "r");
+  if (!f1)
     {
       perror(argv[1]);
       return 2;
     }
-  intfilesum(f,&s, &c); /*This has to be address draw from variable not a pointer*/
-  printf("sum of numbers is %d\n number count is %d\n",s, c);
-  fclose(f);
+  f2 = fopen(argv[2], "w");
+  if (!f2)
+    {
+      perror(argv[2]);
+      return 3;
+    }
+  string51(f1, f2);
   return 0;
 }
