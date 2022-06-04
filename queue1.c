@@ -6,7 +6,7 @@ struct item {
   struct item *next;
 };
 
-struct item *frst(int *arr, int len)
+struct item *int_array_to_list(int *arr, int len)
 {
   struct item *first=NULL, *last=NULL, *tmp;
   int i;
@@ -17,12 +17,12 @@ struct item *frst(int *arr, int len)
       tmp->next=NULL;
       if (last)
 	{
-	  last->next=tmp;
+	  last->next=tmp; /*adding to the end of the line*/
 	  last=last->next;
 	}
       else
 	{
-	  first=last=tmp;
+	  first=last=tmp; /*first will be with first address. last and tmp not*/
 	}
     }
   return first;
@@ -30,9 +30,9 @@ struct item *frst(int *arr, int len)
 
 int main()
 {
-  struct item *f;
+  struct item *f; 
   int m[] = {3,5,5,2,5,1};
-  f = frst(m,sizeof(m));
+  f = int_array_to_list(m,sizeof(m));
   printf("%d\n",f->data);
   return 0;
 }
