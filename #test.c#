@@ -1,5 +1,0 @@
-o/*bintree.c*/
-#include <stdio.h>
-#include <stdlib.h>
-
-void int_bin_tree_print_loop

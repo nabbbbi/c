@@ -119,6 +119,7 @@ int main()
     int_bin_tree_add(&root,vals[i]); /*add integers to binary tree*/
   int_bin_tree_print_loop(root); /*print all elements in binary tree*/
   int_bin_tree_dispose(root); /*delete all dynamic elements*/
-  printf("number of indexes in array: %ld\nsize of each index: %ld bytes\n",sizeof(vals), sizeof(*vals));
+  printf("number of indexes in array: %ld\nsize of each index: %ld bytes\n",sizeof(vals),
+	 sizeof(*vals));
   return 0;
 }
