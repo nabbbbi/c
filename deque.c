@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "deque.h"
 
 struct item {
   double data;
@@ -58,12 +59,12 @@ void del_first_element(struct item *first)
     }
 }
 
-void del_first_element(struct item *last)
+void del_last_element(struct item *last)
 {
   if (last)
     {
       struct item *first, *tmp=last;
-      last=last->next;
+      last=last->prev;
       if(last)
 	last->next=NULL;
       else

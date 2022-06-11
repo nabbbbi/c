@@ -1,6 +1,15 @@
 /*bintree.c*/
 #include <stdio.h>
 #include <stdlib.h>
+#include "bintree.h"
+
+
+#if 0
+void int_callback_sum(int data, void *userdata)
+{
+  *(int*)userdata += data;
+}
+#endif
 
 struct node
 {
@@ -8,6 +17,7 @@ struct node
   struct node *left, *right;
 };
 
+#if 0
 void int_bin_tree_print_loop(struct node *r)
 {
   enum state {start, left_visited, completed}; /*start - we first time
@@ -67,18 +77,19 @@ void int_bin_tree_print_loop(struct node *r)
 	}
     }
 }
+#endif
 
-/*the same but recursion mode*/
-/*
-void int_bin_tree_print_rec(struct node *r)
+#if 1
+/*the game but recursion mode*/
+void int_bin_tree_print_loop(struct node *r)
 {
   if(!r)
     return;
-  int_bin_tree_print_rec(r->left);
-  printf("%d", r->val);
-  int_bin_tree_print_rec(r->right);
+  int_bin_tree_print_loop(r->left);
+  printf("%d ", r->val);
+  int_bin_tree_print_loop(r->right);
 }
-*/
+#endif
 
 void int_bin_tree_add(struct node **root, int n) /*address of pointer*/
 {

@@ -14,6 +14,6 @@ int main()
   x=4;
   y=20;
   swap(&x,&y);
-  printf("%d %d", x, y);
+  printf("%d %d\n", x, y);
   return 0;
 }
