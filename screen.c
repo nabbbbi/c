@@ -8,13 +8,14 @@ enum {delay_duration=30};
 int main()
 {
   int row, col;
-  initscr();
-  getmaxyx(stdscr,row,col);
-  move(row/2,(col-(sizeof(message)-1))/2);
-  addstr(message);
-  curs_set(0);
-  refresh();
-  sleep(delay_duration); /*after 5 seconds end*/
-  endwin();
+  initscr(); /*begin ncurses*/
+  getmaxyx(stdscr,row,col); /*put unto vars horisontal and vertical values increases by 
+			      max because of stdscr*/
+  move(row/2,(col-(sizeof(message)-1))/2); /*move cursor to certain place in screen*/
+  addstr(message); /*add to this moved place string*/
+  curs_set(0); /*cursor will disappear*/
+  refresh(); /*refresh to activate changes*/
+  sleep(delay_duration); /*wait*/ 
+  endwin(); /*end of ncurses*/
   return 0;
 }
