@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include "int_to_bytes.h"
+#include <ncurses.h>
 
 void swap(int *a, int *b)
 {
@@ -11,9 +13,12 @@ void swap(int *a, int *b)
 int main()
 {
   int x,y;
-  x=4;
-  y=20;
+  initscr();
+  x = A_BOLD;
+  y |= A_BOLD;
   swap(&x,&y);
   printf("%d %d\n", x, y);
+  int_byte(x);
+  endwin();
   return 0;
 }

@@ -1,5 +1,11 @@
 #include <stdio.h>
-*#include "int_to_bytes.h"*
+#include <ncurses.h>
+
+union split
+{
+  int integer;
+  unsigned char spl[sizeof(int)];
+};
 
 void integer_bytes(int n)
 {
@@ -7,12 +13,13 @@ void integer_bytes(int n)
   int i;
   s.integer = n;
   for (i=0;i<sizeof(int); i++)
-    printf("byte %d is %x\n",i, s.bytes[i]);
+    printf("byte%d is %x\n",i, s.spl[i]);
 }
 
 int main()
 {
-  int n=300;
+  int n;
+  n=4555;
   integer_bytes(n);
   return 0;
 }

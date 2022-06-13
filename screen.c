@@ -12,7 +12,7 @@ int main()
   getmaxyx(stdscr,row,col); /*put unto vars horisontal and vertical values increases by 
 			      max because of stdscr*/
   move(row/2,(col-(sizeof(message)-1))/2); /*move cursor to certain place in screen*/
-  addstr(message); /*add to this moved place string*/
+  addch(55 | A_BOLD | A_BLINK); /*add to this moved place string*/
   curs_set(0); /*cursor will disappear*/
   refresh(); /*refresh to activate changes*/
   sleep(delay_duration); /*wait*/ 

@@ -19,23 +19,23 @@ static int setpair(int fg, int bg)
 {
   int n = bg*8 + fg + 1; /* "1" was added to exclude color #0 (interdict) in 
 			  * case bg and fg are zero*/
-  init_pair(n,fg,bg); 
+  init_pair(n,fg,bg); /*set color on number n*/
   return n;
 }
 
 static void make_line(int line, int width, int fgcolor)
 {
   int i, j, w, pn, att;
-  w = width/color_count; 
+  w = width/color_count; /*width of screen*/
   for (i=0; i < color_count; i++)
     {
       move(line,i*w);
-      pn = setpair(fgcolor, all_colors[i]);
-      for (j=0; j < w; j++)
+      pn = setpair(fgcolor, all_colors[i]); /*pn will store number of color pair*/
+      for (j=0; j < w; j++) /*fill void bitween i*/
 	{
 	  att= COLOR_PAIR(pn);
 	  if(j % 2 == 0)
-	    att |= A_BOLD;
+	    att |= A_BOLD; /*att | A_BOLD result put in att */
 	  if((j / 2) % 2 == 1)
 	    att |= A_BLINK;
 	  attrset(att);
