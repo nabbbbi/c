@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <ncurses.h>
+
+union tell
+{
+  int integer;
+  char byte;
+};
+int main()
+{
+  union f;
+  int n;
+  scanf("%d",&n);
+}

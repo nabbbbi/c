@@ -4,12 +4,25 @@
 static const char message[] = "Hello, world!";
 enum {key_escape=27};
 
+#if 0
 static void show_message(int x, int y)
 {
   move(x,y);
   addstr(message);
   refresh();
 }
+#endif
+
+#if 1
+static void show_message(int x, int y)
+{
+  move(x,y);
+  addstr(message);
+  move(0,0);
+  printw("(%d,%d)     ", x, y);
+  refresh();
+}
+#endif
 
 static void hide_message(int x, int y)
 {

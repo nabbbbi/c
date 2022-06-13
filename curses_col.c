@@ -19,7 +19,7 @@ static int setpair(int fg, int bg)
 {
   int n = bg*8 + fg + 1; /* "1" was added to exclude color #0 (interdict) in 
 			  * case bg and fg are zero*/
-  int_pair(n,fg,bg); 
+  init_pair(n,fg,bg); 
   return n;
 }
 
@@ -30,17 +30,17 @@ static void make_line(int line, int width, int fgcolor)
   for (i=0; i < color_count; i++)
     {
       move(line,i*w);
-      pn = setpair(fgcolor, allcolors[i]);
+      pn = setpair(fgcolor, all_colors[i]);
       for (j=0; j < w; j++)
 	{
 	  att= COLOR_PAIR(pn);
 	  if(j % 2 == 0)
-	    att | = A_BOLD;
+	    att |= A_BOLD;
 	  if((j / 2) % 2 == 1)
-	    att | = A_BLINK;
+	    att |= A_BLINK;
 	  attrset(att);
 	  addch('*');
-	  refresh;
+	  refresh();
 	}
     }
 }
@@ -80,6 +80,7 @@ int main()
   curs_set(0);
   start_color();
   getmaxyx(stdscr, row, col);
+  make_screen(row, col);
   shift = 2;
   while ((ch = getch()) != key_escape)
     {
@@ -87,6 +88,6 @@ int main()
       shift++;
       refresh();
     }
-  endwin()
+  endwin();
   return 0;
 }

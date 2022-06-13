@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include <ncurses.h>
+
+int main()
+{
+  initscr();
+  attron(A_BOLD);
+  addstr("Hello");
+  endwin();
+  return 0;
+}
