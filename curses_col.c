@@ -30,7 +30,7 @@ static void make_line(int line, int width, int fgcolor)
   for (i=0; i < color_count; i++)
     {
       move(line,i*w);
-      pn = setpair(fgcolor, all_colors[i]); /*pn will store number of color pair*/
+      pn = setpair(fgcolor, all_colors[i]); /*pn will be bound with this pair of color*/
       for (j=0; j < w; j++) /*fill void bitween i*/
 	{
 	  att= COLOR_PAIR(pn);
@@ -38,7 +38,7 @@ static void make_line(int line, int width, int fgcolor)
 	    att |= A_BOLD; /*att | A_BOLD result put in att */
 	  if((j / 2) % 2 == 1)
 	    att |= A_BLINK;
-	  attrset(att);
+	  attrset(att); /*activate colorpair*/
 	  addch('*');
 	  refresh();
 	}
@@ -82,7 +82,7 @@ int main()
   getmaxyx(stdscr, row, col);
   make_screen(row, col);
   shift = 2;
-  while ((ch = getch()) != key_escape)
+  while ((ch = getch()) != key_escape) /*tell us about button*/
     {
       shift_pairs(shift);
       shift++;
