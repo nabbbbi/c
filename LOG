@@ -1,0 +1,12 @@
+execve("./greet", ["./greet", "Ruslan"], 0x7fddd496f8 /* 48 vars */) = 0
+brk(NULL)                               = 0x669000
+brk(0x669a10)                           = 0x669a10
+uname({sysname="Linux", nodename="raspberrypi", ...}) = 0
+readlinkat(AT_FDCWD, "/proc/self/exe", "/home/pi/git/c/greet", 4096) = 20
+brk(0x68aa10)                           = 0x68aa10
+brk(0x68b000)                           = 0x68b000
+mprotect(0x487000, 16384, PROT_READ)    = 0
+fstat(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(0x88, 0), ...}) = 0
+write(1, "Hello, dear Ruslan\n", 19)    = 19
+exit_group(0)                           = ?
++++ exited with 0 +++
