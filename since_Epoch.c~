@@ -1,0 +1,10 @@
+#include <time.h>
+#include <stdio.h>
+
+int main()
+{
+  time_t n;
+  n=time(NULL);
+  printf("%ld\n",n);
+  return 0;
+}
