@@ -8,4 +8,3 @@ int main()
   for(i=0; *environ; i++)
     printf("[%s]",environ[i]);
   return 0;
-}
