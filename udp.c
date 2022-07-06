@@ -88,5 +88,3 @@ int main()
   printf("result should be zero if socket successfully binded.\nAnd result is '%d'\n",res);
   return 0;
 }
-sdffdsf
-sdfsdfsdfsdf
