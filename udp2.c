@@ -5,7 +5,7 @@ int main()
 	     struct sockaddr *addr, int addrlen);
   int recvfrom(int socket, char *buf, int buflen, int flags,
 	       struct sockaddr *addr, int *addrlen);
-  ⋮int bytes_sent;
+  int bytes_sent;
   int bytes_received;
   char data_sent[256];
   char data_received[256];
