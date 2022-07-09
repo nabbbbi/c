@@ -17,7 +17,7 @@ int main()
   struct sockaddr_in server;
   struct sockaddr client;
   socklen_t addrlen;
-  int ok,sock_server,sock_client, connected_sock;
+  int ok,sock_server,sock_client, connected_sock, opt;
   /*creating server*/
   sock_server = socket(AF_INET, SOCK_STREAM, 0);
   if (sock_server < 0)
@@ -28,6 +28,11 @@ int main()
   server.sin_family=AF_INET;
   server.sin_port=htons(1024);
   server.sin_addr.s_addr=htonl(INADDR_ANY);
+  opt = 1;
+  setsockopt(sock_server,SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)); /*SOL_SOCKET it's layer of
+									protocol. SO_REUSEADDR
+								       balk to stick the port
+								       to socket after ending*/
   ok = bind(sock_server,(struct sockaddr*)&server,sizeof(server));
   if(ok < 0)
     {
