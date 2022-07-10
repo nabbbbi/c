@@ -1,0 +1,44 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+struct item
+{
+  int data;
+  struct item *next;
+};
+
+struct item *add_int_to_array(int *arr, int len)
+{
+  struct item *first=NULL, *last=NULL, *tmp;
+  int i;
+  for (i=0;i<len;i++)
+    {
+      tmp = malloc(sizeof(struct item));
+      tmp->data = arr[i];
+      tmp->next=NULL;
+      if(last)
+	{
+	  last->next=tmp;
+	  last=last->next;
+	}
+      else
+	{
+	  first=last=tmp; /*save first pointer to the list*/
+	}
+    }
+  return first;
+}
+
+int main()
+{
+  int m[] = {5,5,3,5,1,5,6,4,1,6};
+  int i;
+  struct item *f;
+  f = add_int_to_array(m,sizeof(m));
+  while(f)
+    {
+      printf("%d",f->data);
+      f=f->next;
+    }
+  return 0;
+}

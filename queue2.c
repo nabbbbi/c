@@ -25,6 +25,11 @@ int main()
   struct item *f; 
   int m[] = {3,5,5,2,5,1};
   f = int_array_to_list(m,sizeof(m));
+  int i;
+  for (i=0; i< sizeof(m)/4; i++)
+    {
+      printf("%d\n", m[i]);
+    }
   printf("the first intex is: %d\n size of array: %ld\n size of struct: %ld\n",f->data, sizeof(m), sizeof(*f));
   return 0;
 }

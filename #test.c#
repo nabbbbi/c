@@ -10,4 +10,5 @@ void string_copy(char *dest, const char *src)
   *dest=0;
 }
 
+int main
 
