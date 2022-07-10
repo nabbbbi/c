@@ -3,7 +3,7 @@
 
 struct mes
 {
-  
+  char buf[250];
 };
 
 void string_copy(char *dest, const char *src)
@@ -17,10 +17,10 @@ void string_copy(char *dest, const char *src)
 
 int main()
 {
-  char buf[250];
+  struct mes st;
   char *message = "hello";
-  string_copy(buf,message);
-  printf("%s\n",buf);
+  string_copy(st.buf,message);
+  printf("%s\n",st.buf);
   return 0;
 }
 
