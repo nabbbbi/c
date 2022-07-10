@@ -18,11 +18,12 @@ void string_copy(char *dest, const char *src)
 int main()
 {
   int n;
+  char buf2[50];
   scanf("%d",&n);
   struct mes st;
   char *message = "hello";
   string_copy(st.buf,message);
-  printf("%s %d\n",st.buf,n);
+  printf("%s %d\s",st.buf,buf2);
   return 0;
 }
 
