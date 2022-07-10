@@ -22,7 +22,7 @@ int main()
   struct mes st;
   char *message = "hello";
   string_copy(st.buf,message);
-  printf("%s\n",st.buf);
+  printf("%s %d\n",st.buf,n);
   return 0;
 }
 
