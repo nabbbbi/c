@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct mes
+{
+  
+};
+
 void string_copy(char *dest, const char *src)
 {
   while(*src)
