@@ -7,15 +7,6 @@ struct node
   struct node *left, *right;
 };
 
-void copy_string(char *dest, char *src)
-{
-  while(*src)
-    {
-      *src++=*dest++;
-    }
-  *dest=0;
-}
-
 void add_to_bintree(struct node **root, int n)
 {
   if(!*root)
