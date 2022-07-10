@@ -19,11 +19,11 @@ int main()
 {
   int n;
   char buf2[50];
-  scanf("%d",&n);
+  scanf("%d %s",&n,buf2);
   struct mes st;
   char *message = "hello";
   string_copy(st.buf,message);
-  printf("%s %d\s",st.buf,buf2);
+  printf("%s %s\n",st.buf,buf2);
   return 0;
 }
 
