@@ -11,9 +11,7 @@ void copy_string(char *dest, char *src)
 {
   while(*src)
     {
-      *src=*dest;
-      src++;
-      dest++;
+      *src++=*dest++;
     }
   *dest=0;
 }
