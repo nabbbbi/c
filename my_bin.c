@@ -9,10 +9,13 @@ struct node
 
 void copy_string(char *dest, char *src)
 {
-  while(src)
+  while(*src)
     {
-      
+      *src=*dest;
+      src++;
+      dest++;
     }
+  *dest=0;
 }
 
 void add_to_bintree(struct node **root, int n)
