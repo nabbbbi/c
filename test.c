@@ -10,4 +10,12 @@ void string_copy(char *dest, const char *src)
   *dest=0;
 }
 
+int main()
+{
+  char buf[250];
+  char *message = "hello";
+  string_copy(buf,message);
+  printf("%s",buf);
+  return 0;
+}
 
