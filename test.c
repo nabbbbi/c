@@ -15,7 +15,7 @@ int main()
   char buf[250];
   char *message = "hello";
   string_copy(buf,message);
-  printf("%s",buf);
+  printf("%s\n",buf);
   return 0;
 }
 
