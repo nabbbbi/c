@@ -7,6 +7,11 @@ struct node
   struct node *left, *right;
 };
 
+void copy_string(char *dest, char *src)
+{
+  
+}
+
 void add_to_bintree(struct node **root, int n)
 {
   if(!*root)
