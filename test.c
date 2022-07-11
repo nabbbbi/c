@@ -1,28 +1,14 @@
+#include "string_rsln.h"
 #include <stdio.h>
-#include <stdlib.h>
-
-struct mes
-{
-  char buf[250];
-};
-
-void string_copy(char *dest, const char *src)
-{
-  while(*src)
-    {
-      *dest++=*src++;
-    }
-  *dest=0;
-}
+#include <string.h>
 
 int main()
 {
-  char buf2[50];
-  scanf("%s",buf2);
-  struct mes st;
-  char *message = "hello";
-  string_copy(st.buf,message);
-  printf("%s %s\n",st.buf,buf2);
+  int n;
+  char s[50];
+  char *buf = "Hello";
+  n = string_len_rsln(buf);
+  memset(&s,'-',n);
+  printf("%s\n%s\n",buf,s);
   return 0;
 }
-
