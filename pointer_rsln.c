@@ -1,12 +1,11 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include <stdlib.h> /* for malloc */
+#include <stdio.h> /* for printf */
 
 struct node
 {
   int data;
   struct node *left, *right;
 };
-
 
 void read_int_in_bintree(struct node *r)
 {
