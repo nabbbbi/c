@@ -1,5 +1,5 @@
 #include <stdlib.h> /* for malloc */
-#include <stdio.h> /* for printf */
+#include <unistd.h> /* for printf */
 
 struct node
 {
@@ -12,7 +12,8 @@ void read_int_in_bintree(struct node *r)
   if(!r)
     return;
   read_int_in_bintree(r->left);
-  printf("%d\n",r->data);
+  write(1, r->data, sizeof(r->data));
+  /* printf("%d\n",r->data); */
   read_int_in_bintree(r->right);
 }
 
