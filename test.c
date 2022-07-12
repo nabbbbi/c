@@ -49,5 +49,6 @@ int main()
       add_int_to_bintree(&root,m[i]);
     }
   read_int_in_bintree(root);
+  printf("%d", root->data);
   return 0;  
 }
