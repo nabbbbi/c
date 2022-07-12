@@ -11,11 +11,10 @@ struct node
 void read_int_in_bintree(struct node *r)
 {
   if(!r)
-    {
-      read_int_in_bintree(r->left);
-      printf("%d",r->data);
-      read_int_in_bintree(r->right);
-    }
+    return;
+  read_int_in_bintree(r->left);
+  printf("%d\n",r->data);
+  read_int_in_bintree(r->right);
 }
 
 void add_int_to_bintree(struct node **root, int n)
