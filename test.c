@@ -9,16 +9,16 @@ void int_callback_sum  (int n, void *userdata) /* user-a get from
   *sum+=n;
 }
 
-void int_bin_tree_traverse(struct node *root,
-			   void (*int_callback_sum  )(int, void*),
-			   void *userdata)
-{
-  if(!root)
-    return;
-  int_bin_tree_traverse(root->left,int_callback_sum  ,userdata);
-  (*int_callback_print)(root->data,userdata);
-  int_bin_tree_traverse(root->right,int_callback_sum  ,userdata);
-}
+/* void int_bin_tree_traverse(struct node *root, */
+/* 			   void (*int_callback_sum  )(int, void*), */
+/* 			   void *userdata) */
+/* { */
+/*   if(!root) */
+/*     return; */
+/*   int_bin_tree_traverse(root->left,int_callback_sum  ,userdata); */
+/*   (*int_callback_print)(root->data,userdata); */
+/*   int_bin_tree_traverse(root->right,int_callback_sum  ,userdata); */
+/* } */
 
 int main()
 {
