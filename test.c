@@ -29,6 +29,6 @@ int main()
     {
       add_int_to_bintree(&f,m[i]);
     }
-  int_bin_tree_traverse(f,int_callback_print,userdata);
+  int_bin_tree_traverse(f,int_callback_print,NULL);
   return 0;
 }
