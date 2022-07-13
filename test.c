@@ -22,6 +22,7 @@ void int_bin_tree_traverse(struct node *root,
 int main()
 {
   int i;
+  void *userdata;
   int m[] = {35,-44,15,-5,67,37,334,22,-14,98,42,11};
   struct node *f = NULL;
   for(i=0; i < sizeof(m)/sizeof(*m); i++)
