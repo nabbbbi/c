@@ -5,7 +5,7 @@
 void int_callback_print(int n, void *userdata) /* user-a get from
 						  ext function */
 {
-  printf("%d",n); 
+  printf("%d\n",n);
 }
 
 void int_bin_tree_traverse(struct node *root,
