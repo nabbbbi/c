@@ -9,14 +9,14 @@ void int_callback_print(int n, void *userdata) /* user-a get from
 }
 
 void int_bin_tree_traverse(struct node *root,
-			   void (*callback)(int, void*),
+			   void (*int_callback_print)(int, void*),
 			   void *userdata)
 {
   if(!root)
     return;
-  int_bin_tree_traverse(root->left,callback,userdata);
-  (*callback)(root->data,userdata);
-  int_bin_tree_traverse(root->right,callback,userdata);
+  int_bin_tree_traverse(root->left,int_callback_print,userdata);
+  (*int_callback_print)(root->data,userdata);
+  int_bin_tree_traverse(root->right,int_callback_print,userdata);
 }
 
 int main()
@@ -29,6 +29,6 @@ int main()
     {
       add_int_to_bintree(&f,m[i]);
     }
-  int_bin_tree_traverse(f,callback,userdata);
+  int_bin_tree_traverse(f,int_callback_print,userdata);
   return 0;
 }
