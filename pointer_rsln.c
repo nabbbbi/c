@@ -182,7 +182,7 @@ void delete_from_list_div7(struct item **f, int (*is_div7)(int))
     }
 }
 
-
+/* Binary trees. Callback */
 void int_callback_print(int n, void *userdata) 
 {
   printf("%d\n",n);
