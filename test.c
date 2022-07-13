@@ -8,9 +8,9 @@ void int_callback_print(int n, void *userdata) /* user-a get from
   printf("%d",n); 
 }
 
-void read_int_to_bintree_callback(struct node *root,
-			 void (*callback)(int, void*),
-			 void *userdata)
+void int_bin_tree_traverse(struct node *root,
+			   void (*callback)(int, void*),
+			   void *userdata)
 {
   if(!root)
     return;
