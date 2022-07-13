@@ -28,6 +28,6 @@ int main()
     {
       add_int_to_bintree(&f,m[i]);
     }
-  read_int_in_bintree(f);
+  int_bin_tree_traverse(f);
   return 0;
 }
