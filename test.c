@@ -14,9 +14,9 @@ void int_bin_tree_traverse(struct node *root,
 {
   if(!root)
     return;
-  read_int_to_bintree_callback(root->left,callback,userdata);
+  int_bin_tree_traverse(root->left,callback,userdata);
   (*callback)(root->data,userdata);
-  read_int_to_bintree_callback(root->right,callback,userdata);
+  int_bin_tree_traverse(root->right,callback,userdata);
 }
 
 int main()
@@ -28,6 +28,6 @@ int main()
     {
       add_int_to_bintree(&f,m[i]);
     }
-  int_bin_tree_traverse(f);
+  int_bin_tree_traverse(f,callback,userdata);
   return 0;
 }
