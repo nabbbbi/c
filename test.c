@@ -1,51 +1,33 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include "pointer_rsln.h"
 
-struct node
+void int_callback_print(int n, void *userdata) /* user-a get from
+						  ext function */
 {
-  int data;
-  struct node *left, *right;
-};
-
-void add_int_to_bintree(struct node **root, int n)
-{
-  if (!*root) 
-    {
-      *root = malloc(sizeof(**root));
-      (*root)->data = n;
-      (*root)->left = NULL;
-      (*root)->right = NULL;
-      return;
-    }
-  if((*root)->data == n)
-    return;
-  if((*root)->data > n)
-    add_int_to_bintree(&(*root)->left, n);
-  else
-    add_int_to_bintree(&(*root)->right, n);
+  printf("%d",n); 
 }
 
-void read_int_in_bintree(struct node *r)
+void read_int_to_bintree_callback(struct node *root,
+			 void (*callback)(int, void*),
+			 void *userdata)
 {
-  if(!r)
+  if(!root)
     return;
-  read_int_in_bintree(r->left);
-  printf("%d\n",r->data);
-  read_int_in_bintree(r->right);
+  read_int_to_bintree_callback(root->left,callback,userdata);
+  (*callback)(root->data,userdata);
+  read_int_to_bintree_callback(root->right,callback,userdata);
 }
 
 int main()
 {
   int i;
-  struct node *root=NULL;
-  static const int m[] = {
-    50, 25, 75, 15, 30, 60, 9, 10, 20, 40,
-    60, 70, 80, 95, 39, 35, 45, 55, 65, 85
-  };
-  for (i=0; i < sizeof(m)/sizeof(*m); i++)
+  int m[] = {35,-44,15,-5,67,37,334,22,-14,98,42,11};
+  struct node *f = NULL;
+  for(i=0; i < sizeof(m)/sizeof(*m); i++)
     {
-      add_int_to_bintree(&root,m[i]);
+      add_int_to_bintree(&f,m[i]);
     }
-  read_int_in_bintree(root);
-  return 0;  
+  read_int_in_bintree(f);
+  return 0;
 }
