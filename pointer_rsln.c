@@ -181,3 +181,4 @@ void delete_from_list_div7(struct item **f, int (*is_div7)(int))
 	f=&(*f)->next;
     }
 }
+
