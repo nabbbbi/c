@@ -182,3 +182,13 @@ void delete_from_list_div7(struct item **f, int (*is_div7)(int))
     }
 }
 
+void int_bin_tree_traverse(struct node *root,
+			   void (*int_callback_print)(int, void*),
+			   void *userdata)
+{
+  if(!root)
+    return;
+  int_bin_tree_traverse(root->left,int_callback_print,userdata);
+  (*int_callback_print)(root->data,userdata);
+  int_bin_tree_traverse(root->right,int_callback_print,userdata);
+}
