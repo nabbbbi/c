@@ -32,5 +32,6 @@ int main()
       add_int_to_bintree(&f,m[i]);
     }
   int_bin_tree_traverse(f,int_callback_sum  ,&sum);
+  printf("%d\n",sum);
   return 0;
 }
