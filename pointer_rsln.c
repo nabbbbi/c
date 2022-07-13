@@ -189,6 +189,13 @@ void int_callback_print(int n, void *userdata)
 }
 
 /* Binary trees. Callback */
+void int_callback_sum  (int n, void *userdata)
+{
+  int *sum = userdata;
+  *sum+=n;
+}
+
+/* Binary trees. Callback */
 void int_bin_tree_traverse(struct node *root,
 			   void (*int_callback_print)(int, void*),
 			   void *userdata)
