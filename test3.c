@@ -1,14 +1,14 @@
+#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
-#include <unistd.h>
+#include "pointer_rsln.h"
+
+void fuction(struct node *f);
 
 int main()
 {
-  int i;
-  void *z;
-  char *c = "f";
-  z=c;
-  write(1,z,1);
-  write(1,"\n",1);
+  int sum = 0;
+  struct node *f = NULL;
+  int_bin_tree_traverse(f,int_callback_sum, &sum);
+  printf("%d\n", sum);
   return 0;
 }

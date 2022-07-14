@@ -187,9 +187,8 @@ void int_callback_print(int n, void *userdata)
 {
   printf("%d\n",n);
 }
-
 /* Binary trees. Callback */
-void int_callback_sum  (int n, void *userdata)
+void int_callback_sum(int n, void *userdata)
 {
   int *sum = userdata;
   *sum+=n;
@@ -197,12 +196,12 @@ void int_callback_sum  (int n, void *userdata)
 
 /* Binary trees. Callback */
 void int_bin_tree_traverse(struct node *root,
-			   void (*int_callback_print)(int, void*),
+			   void (*callback)(int, void*),
 			   void *userdata)
 {
   if(!root)
     return;
-  int_bin_tree_traverse(root->left,int_callback_print,userdata);
-  (*int_callback_print)(root->data,userdata);
-  int_bin_tree_traverse(root->right,int_callback_print,userdata);
+  int_bin_tree_traverse(root->left,callback,userdata);
+  (*callback)(root->data,userdata);
+  int_bin_tree_traverse(root->right,callback,userdata);
 }

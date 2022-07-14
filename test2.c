@@ -1,24 +1,46 @@
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
 #include <stdio.h>
 
-char *memset_rsln(char *s, int c, int n)
+int create_netsocket_dgram(const int port, const char *address)
 {
-  int i;
-  for(i=0; i < n; i++)
+  int sockfd, ok_7, option;
+  struct sockaddr_in addr;
+  sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+  if (sockfd == -1)
     {
-      s[i]=c;
+      perror("socket");
+      return sockfd;
     }
-  return s;
-}
-
-int main(int argc, char **argv)
-{
-  if(argc < 2)
+  addr.sin_family = AF_INET;
+  addr.sin_port = htons(port);
+  if(!address)
     {
-      printf("no no no");
-      return 1;
+      addr.sin_addr.s_addr = htonl(INADDR_ANY);
     }
-  char *d;
-  d =  memset_rsln(argv[1],'x',5);
-  printf("%s\n",d);
-  return 0;
+  else
+    {
+      addr.sin_addr.s_addr = inet_addr(address);
+      if (!addr.sin_addr.s_addr)
+	{
+	  perror("inet_addr");
+	  return ok_7;
+	}
+    }
+  option = 1;
+  ok_7 = setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR,
+		   &option, sizeof(option));
+  if(ok_7 == -1)
+    {
+      perror("setsocket");
+      return ok_7;
+    }
+  ok_7 = bind(sockfd, (struct sockaddr*)&addr, sizeof(addr));
+  if(ok_7 == -1)
+    {
+      perror("bind");
+      return ok_7;
+    }
+  return sockfd;
 }

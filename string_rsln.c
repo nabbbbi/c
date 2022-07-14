@@ -22,3 +22,14 @@ void copy_string_rsln(char *dest, const char *src)
   *dest=0; 
 }
 
+/* copy a value to the bunch of memory */
+void *memset_rsln(void *s, int c, unsigned int n)
+{
+  int i;
+  char *ch= s;
+  for(i=0; i < n; i++)
+    {
+      *ch++ = c;
+    }
+  return ch;
+}

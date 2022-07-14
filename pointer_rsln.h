@@ -29,6 +29,7 @@ int is_even(int n);
 void delete_from_list_even(struct item **f, int (*even)(int));
 
 void int_callback_print(int n, void *userdata);
+void int_callback_sum(int n, void *userdata);
 void int_bin_tree_traverse(struct node *root,
 			   void (*int_callback_print)(int, void*),
 			   void *userdata);
