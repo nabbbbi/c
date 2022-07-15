@@ -1,46 +1,61 @@
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <sys/socket.h>
+#include <stdlib.h>
 #include <stdio.h>
+#include <netinet/in.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <fcntl.h>
 
-int create_netsocket_dgram(const int port, const char *address)
+enum {size_of_queue = 16};
+enum {port1 = 1024, port2 = 1025};
+char *message = "hello";
+char buf[10];
+
+int main()
 {
-  int sockfd, ok_7, option;
+  int ok, ls,cls,cl;
+  socklen_t len;
   struct sockaddr_in addr;
-  sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-  if (sockfd == -1)
+  ls = socket(AF_INET, SOCK_STREAM,0);
+  if(ls == -1)
     {
       perror("socket");
-      return sockfd;
+      return 1;
     }
   addr.sin_family = AF_INET;
-  addr.sin_port = htons(port);
-  if(!address)
-    {
-      addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    }
-  else
-    {
-      addr.sin_addr.s_addr = inet_addr(address);
-      if (!addr.sin_addr.s_addr)
-	{
-	  perror("inet_addr");
-	  return ok_7;
-	}
-    }
-  option = 1;
-  ok_7 = setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR,
-		   &option, sizeof(option));
-  if(ok_7 == -1)
-    {
-      perror("setsocket");
-      return ok_7;
-    }
-  ok_7 = bind(sockfd, (struct sockaddr*)&addr, sizeof(addr));
-  if(ok_7 == -1)
+  addr.sin_port = htons(port1);
+  addr.sin_addr.s_addr = htonl(INADDR_ANY);
+  ok = bind(ls,(struct sockaddr*)&addr, sizeof(addr));
+  if(ok == -1)
     {
       perror("bind");
-      return ok_7;
+      return 1;
     }
-  return sockfd;
+  listen(ls, size_of_queue);
+  cl = socket(AF_INET, SOCK_STREAM,0);
+  if (cl == -1)
+    {
+      perror("socket");
+      return 1;
+    }
+  ok = connect(cl,(struct sockaddr*)&addr, sizeof(addr));
+  if (ok == -1)
+    {
+      perror("connect");
+      return 1;
+    }
+  len = sizeof(addr);
+  cls = accept(ls,(struct sockaddr*)&addr,&len);
+  if (cls == -1)
+    {
+      perror("accept");
+      return 1;
+    }
+  write(cl, message, sizeof(message));
+  read(cls,buf,sizeof(buf));
+  write(1, buf, sizeof(buf));
+  write(1,"\n",1);
+  return 0;
 }
+
+
