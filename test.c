@@ -70,7 +70,7 @@ int main()
 	    max_d = fd;
 	}
       timeout.tv_sec = 1;
-      timeout.tv_usec = 300000;
+      timeout.tv_usec = 300000; 
       res = select(max_d + 1, &readfds, &writefds, NULL, &timeout);
       if(res == -1)
 	{
